@@ -26,7 +26,7 @@ namespace XR.Break
 
         public UnityEvent OnSpawn = new UnityEvent();
 
-        public UnityEvent OnCapture = new UnityEvent();
+        public UnityEvent OnRelease = new UnityEvent();
 
         protected bool active = false;
         private float timer = 0.0f;
@@ -76,7 +76,7 @@ namespace XR.Break
                 timer += Time.deltaTime;
                 if (timer > Lifetime)
                 {
-                    Captured();
+                    Release();
                 }
             }
         }
@@ -85,15 +85,15 @@ namespace XR.Break
         {
             if (active)
             {
-                Captured();
+                Release();
             }
         }
 
-        protected virtual void Captured()
+        protected virtual void Release()
         {
             active = false;
             PlayAnimation(true);
-            OnCapture?.Invoke();
+            OnRelease?.Invoke();
         }
 
         #endregion

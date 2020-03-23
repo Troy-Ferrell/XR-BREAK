@@ -23,7 +23,7 @@ namespace XR.Break
                 // We started on one side of the sphere collider but passed through the ring to the other side on exit
                 if (positiveSideStart != positiveSideEnd)
                 {
-                    Captured();
+                    Release();
                 }
             }
         }
