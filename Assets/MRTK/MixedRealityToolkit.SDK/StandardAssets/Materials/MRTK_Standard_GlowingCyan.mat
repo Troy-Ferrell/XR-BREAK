@@ -180,7 +180,7 @@ Material:
     - _EnvironmentColorY: {r: 0, g: 0.4862745, b: 0.79607844, a: 1}
     - _EnvironmentColorZ: {r: 0.6544118, g: 0.86551, b: 1, a: 1}
     - _HoverColorOpaqueOverride: {r: 1, g: 1, b: 1, a: 1}
-    - _HoverColorOverride: {r: 0, g: 1, b: 1, a: 1}
+    - _HoverColorOverride: {r: 1, g: 1, b: 1, a: 1}
     - _InnerGlowColor: {r: 1, g: 0.73324853, b: 0, a: 0.8666667}
     - _ProximityLightCenterColorOverride: {r: 1, g: 0, b: 0, a: 0}
     - _ProximityLightMiddleColorOverride: {r: 0, g: 1, b: 0, a: 0.5}
