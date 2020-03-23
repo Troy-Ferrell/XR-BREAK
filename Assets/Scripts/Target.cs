@@ -3,6 +3,9 @@ using UnityEngine.Events;
 
 namespace XR.Break
 {
+    /// <summary>
+    /// Class manages life-cycle of a Target and whether the item has been captured via collision
+    /// </summary>
     public class Target : MonoBehaviour
     {
         [Header("References")]
