@@ -188,6 +188,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4919655362078134127, guid: ee36970dd71abd04b97ebaffcc10dc98,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919655362078134127, guid: ee36970dd71abd04b97ebaffcc10dc98,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919655362078134127, guid: ee36970dd71abd04b97ebaffcc10dc98,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 0.02189854
+      objectReference: {fileID: 0}
     - target: {fileID: 6747958217008022235, guid: ee36970dd71abd04b97ebaffcc10dc98,
         type: 3}
       propertyPath: m_Name
@@ -247,21 +262,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4919655362078134127, guid: ee36970dd71abd04b97ebaffcc10dc98,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4919655362078134127, guid: ee36970dd71abd04b97ebaffcc10dc98,
-        type: 3}
-      propertyPath: m_Parameters.colorGradient.key0.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4919655362078134127, guid: ee36970dd71abd04b97ebaffcc10dc98,
-        type: 3}
-      propertyPath: m_Parameters.colorGradient.key1.a
-      value: 0.02189854
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee36970dd71abd04b97ebaffcc10dc98, type: 3}
@@ -517,8 +517,11 @@ MonoBehaviour:
   ringPool: {fileID: 2032166869}
   layerMask:
     serializedVersion: 2
-    m_Bits: 2147484160
-  RingRadius: 0.1
+    m_Bits: 2147483648
+  MinSpawnThreshold: 3
+  MaxSpawnThreshold: 6
+  MinDistanceSpace: 0.25
+  SphereCastRadius: 0.2
 --- !u!4 &2032166867
 Transform:
   m_ObjectHideFlags: 0

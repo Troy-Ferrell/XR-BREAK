@@ -3,11 +3,14 @@ using UnityEngine;
 
 namespace XR.Break
 {
+    /// <summary>
+    /// Class that manages spawning and placement of Ring/Marker Targets into the environment
+    /// </summary>
     public class TargetManager : MonoBehaviour
     {
         [SerializeField]
         private ObjectPool markerPool;
-
+        
         [SerializeField]
         private ObjectPool ringPool;
 
@@ -15,41 +18,67 @@ namespace XR.Break
         private LayerMask layerMask;
 
         [SerializeField]
-        private float RingRadius = 0.1f;
+        private float MinSpawnThreshold = 3.0f;
+
+        [SerializeField]
+        private float MaxSpawnThreshold = 6.0f;
+
+        [SerializeField]
+        private float MinDistanceSpace = 0.25f;
+
+        [SerializeField]
+        private float SphereCastRadius = 0.2f;
 
         private const float MIN_RAYCAST_DISTANCE = 1f;
         private const float MAX_RAYCAST_DISTANCE = 10.0f;
         private const float HIT_OFFSET = 0.05f;
-        private float timer;
+        
+        private float markerTimer;
+        private float markerTimeLimit;
+
+        private float ringTimer;
+        private float ringTimeLimit;
+
+        private float minDistanceSpaceSqr;
 
         private void Awake()
         {
-            Debug.Assert(markerPool != null);
-            Debug.Assert(ringPool != null);
+            Debug.Assert(MinSpawnThreshold < MaxSpawnThreshold, "MinSpawnThreshold is not less than MaxSpawnThreshold");
+
+            markerTimeLimit = Random.Range(MinSpawnThreshold, MaxSpawnThreshold);
+            ringTimeLimit = Random.Range(MinSpawnThreshold, MaxSpawnThreshold);
+
+            minDistanceSpaceSqr = MinDistanceSpace * MinDistanceSpace;
         }
 
         private void Update()
         {
-            timer += Time.deltaTime;
+            markerTimer += Time.deltaTime;
 
-            if (timer > 3.0f)
+            if (markerTimer > markerTimeLimit)
             {
-                timer = 0.0f;
+                markerTimer = 0.0f;
                 PlaceMarker();
+            }
+
+            ringTimer += Time.deltaTime;
+            if (ringTimer > ringTimeLimit)
+            {
+                ringTimer = 0.0f;
                 PlaceRing();
             }
         }
 
         private void PlaceRing()
         {
-            if (markerPool.HasAvailable())
+            if (ringPool.HasAvailable())
             {
                 var cam = CameraCache.Main.transform;
                 var direction = GenerateRandomDirection(cam);
 
                 if (Physics.SphereCast(
                     cam.position,
-                    RingRadius,
+                    SphereCastRadius,
                     direction,
                     out RaycastHit hit,
                     MAX_RAYCAST_DISTANCE,
@@ -59,18 +88,12 @@ namespace XR.Break
                     {
                         var midPoint = (cam.position + hit.point ) / 2.0f;
 
-                        foreach (var target in ringPool.ActiveObjects)
+                        if (IsValidPlacement(midPoint))
                         {
-                            if ((target.GetGameObject().transform.position - midPoint).sqrMagnitude < 0.25f * 0.25f)
-                            {
-                                return;
-                            }
+                            var ring = ringPool.Request().GetGameObject();
+                            ring.transform.position = midPoint;
+                            ring.transform.rotation = Quaternion.LookRotation(direction);
                         }
-
-                        var marker = ringPool.Request().GetGameObject();
-
-                        marker.transform.position = midPoint;
-                        marker.transform.rotation = Quaternion.LookRotation(direction);
                     }
                 }
             }
@@ -89,26 +112,45 @@ namespace XR.Break
                     MAX_RAYCAST_DISTANCE,
                     layerMask))
                 {
-                    if (hit.distance > MIN_RAYCAST_DISTANCE &&
-                        hit.transform.gameObject.layer == 31)
+                    if (hit.distance > MIN_RAYCAST_DISTANCE)
                     {
                         var placementPoint = hit.point + hit.normal * HIT_OFFSET;
 
-                        foreach (var target in markerPool.ActiveObjects)
+                        if (IsValidPlacement(placementPoint))
                         {
-                            if ( (target.GetGameObject().transform.position - placementPoint).sqrMagnitude < 0.25f * 0.25f)
-                            {
-                                return;
-                            }
+                            var marker = markerPool.Request().GetGameObject();
+                            marker.transform.position = placementPoint;
+                            marker.transform.rotation = Quaternion.LookRotation(hit.normal);
                         }
-
-                        var marker = markerPool.Request().GetGameObject();
-
-                        marker.transform.position = placementPoint;
-                        marker.transform.rotation = Quaternion.LookRotation(hit.normal);
                     }
                 }
             }
+        }
+
+        private bool IsValidPlacement(Vector3 pos)
+        {
+            foreach (var target in markerPool.ActiveObjects)
+            {
+                if (WithinDistance(target.GetGameObject().transform.position, pos, minDistanceSpaceSqr))
+                {
+                    return false;
+                }
+            }
+
+            foreach (var target in ringPool.ActiveObjects)
+            {
+                if (WithinDistance(target.GetGameObject().transform.position, pos, minDistanceSpaceSqr))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private static bool WithinDistance(Vector3 p1, Vector3 p2, float sqrDistance)
+        {
+            return (p1 - p2).sqrMagnitude < sqrDistance;
         }
 
         private static Vector3 GenerateRandomDirection(Transform transform)
