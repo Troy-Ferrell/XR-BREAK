@@ -14,9 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PoolItem: {fileID: 1595343974021771625}
   SpinAnimator: {fileID: 380876954589101386}
-  OnHitAudio: {fileID: 1183046922189929549}
   AutoDestruct: 1
   Lifetime: 15
+  OnSpawn:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRelease:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8586092582898237163
 GameObject:
   m_ObjectHideFlags: 0
@@ -68,11 +73,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5030399884024006675}
     m_Modifications:
-    - target: {fileID: 1675736602014639126, guid: fa4035f4ff198e74a97d742b360712aa,
-        type: 3}
-      propertyPath: m_Name
-      value: Target
-      objectReference: {fileID: 0}
     - target: {fileID: 1675736602014639125, guid: fa4035f4ff198e74a97d742b360712aa,
         type: 3}
       propertyPath: m_RootOrder
@@ -93,6 +93,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1675736602014639126, guid: fa4035f4ff198e74a97d742b360712aa,
+        type: 3}
+      propertyPath: m_Name
+      value: Target
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa4035f4ff198e74a97d742b360712aa, type: 3}
 --- !u!1 &3743316221963046121 stripped
@@ -110,12 +115,6 @@ Transform:
 --- !u!95 &380876954589101386 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 2448447848506267061, guid: fa4035f4ff198e74a97d742b360712aa,
-    type: 3}
-  m_PrefabInstance: {fileID: 2644606712012826879}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1183046922189929549 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 3807935470749127858, guid: fa4035f4ff198e74a97d742b360712aa,
     type: 3}
   m_PrefabInstance: {fileID: 2644606712012826879}
   m_PrefabAsset: {fileID: 0}

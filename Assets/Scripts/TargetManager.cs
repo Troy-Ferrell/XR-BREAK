@@ -15,8 +15,9 @@ namespace XR.Break
         private ObjectPool ringPool;
 
         [SerializeField]
-        private LayerMask layerMask;
+        private LayerMask layerMask = LayerMask.GetMask("Spatial Awareness");
 
+        [Min(0.0f)]
         [SerializeField]
         private float MinSpawnThreshold = 3.0f;
 
@@ -156,9 +157,10 @@ namespace XR.Break
         private static Vector3 GenerateRandomDirection(Transform transform)
         {
             var topDownForward = new Vector3(transform.forward.x, 0.0f, transform.forward.z);
+            var topDownRight = new Vector3(transform.right.x, 0.0f, transform.right.z);
 
             // Generate random raycast in 180 degree FOV of camera
-            var raycastDir = Vector3.Lerp(topDownForward - transform.right, topDownForward + transform.right, Random.Range(0.0f, 1.0f));
+            var raycastDir = Vector3.Lerp(topDownForward - topDownRight, topDownForward + topDownRight, Random.Range(0.0f, 1.0f));
             raycastDir = Vector3.Lerp(raycastDir - Vector3.up, raycastDir + Vector3.up, Random.Range(0.0f, 1.0f));
 
             return raycastDir;

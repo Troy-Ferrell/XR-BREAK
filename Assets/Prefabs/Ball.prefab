@@ -518,8 +518,8 @@ GameObject:
   - component: {fileID: 6174093807705911825}
   - component: {fileID: 8884401206976028683}
   - component: {fileID: 7703824816187103873}
-  - component: {fileID: 1032665763920524619}
   - component: {fileID: 452238809149313279}
+  - component: {fileID: 1032665763920524619}
   - component: {fileID: 6329692772377217781}
   m_Layer: 10
   m_Name: Ball
@@ -719,6 +719,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &452238809149313279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6747958217008022235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 248664dc0e60dca4fb35d70cd0c5695b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawBoundsGizmo: 0
 --- !u!114 &1032665763920524619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -738,19 +751,6 @@ MonoBehaviour:
   additionalOffset: {x: 0, y: -0.15, z: 0.08}
   additionalRotation: {x: 0, y: 0, z: 0}
   updateSolvers: 1
---- !u!114 &452238809149313279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6747958217008022235}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 248664dc0e60dca4fb35d70cd0c5695b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  drawBoundsGizmo: 0
 --- !u!114 &6329692772377217781
 MonoBehaviour:
   m_ObjectHideFlags: 0
