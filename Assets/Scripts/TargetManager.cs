@@ -6,7 +6,7 @@ namespace XR.Break
     /// <summary>
     /// Class that manages spawning and placement of Ring/Marker Targets into the environment
     /// </summary>
-    public class TargetManager : MonoBehaviour
+    public class TargetManager : Singleton<TargetManager>
     {
         [SerializeField]
         private ObjectPool markerPool;
@@ -15,7 +15,7 @@ namespace XR.Break
         private ObjectPool ringPool;
 
         [SerializeField]
-        private LayerMask layerMask = LayerMask.GetMask("Spatial Awareness");
+        private LayerMask layerMask;
 
         [Min(0.0f)]
         [SerializeField]
@@ -41,6 +41,9 @@ namespace XR.Break
         private float ringTimeLimit;
 
         private float minDistanceSpaceSqr;
+
+        // Prevent Non-singleton construction
+        protected TargetManager() { }
 
         private void Awake()
         {

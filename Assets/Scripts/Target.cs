@@ -34,6 +34,8 @@ namespace XR.Break
         private const string SpinAnimationTrigger = "Spin";
         private const string SpinOutAnimationTrigger = "SpinOut";
 
+        protected const uint DEFAULT_SCORE = 10;
+
         public void SpinStart()
         {
             if (!active)
@@ -85,6 +87,7 @@ namespace XR.Break
         {
             if (active)
             {
+                ScoreManager.Instance.AddScore(DEFAULT_SCORE);
                 Release();
             }
         }
