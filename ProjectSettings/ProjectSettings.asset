@@ -537,7 +537,9 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   scriptingDefineSymbols:
-    14: DOTNETWINRT_PRESENT
+    4: 
+    7: 
+    14: 
   platformArchitecture:
     iOS: 1
   scriptingBackend: {}
@@ -560,7 +562,7 @@ PlayerSettings:
   metroCertificateNotAfter: 80987169b2e5d601
   metroApplicationDescription: Template_3D
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: XR-BREAK
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0

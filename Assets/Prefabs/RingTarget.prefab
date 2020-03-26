@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4083411265874938742}
   - component: {fileID: 3055965000746095364}
   - component: {fileID: 2277392637408802745}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,9 +109,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PoolItem: {fileID: 6697093404269949990}
   SpinAnimator: {fileID: 3055965000746095364}
-  OnHitAudio: {fileID: 2277392637408802745}
   AutoDestruct: 1
   Lifetime: 15
+  OnSpawn:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRelease:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &3055965000746095364
 Animator:
   serializedVersion: 3
@@ -237,7 +242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6050261493600821280}
   - component: {fileID: 6697093404269949990}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RingTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +286,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2438115569966962792}
   - component: {fileID: 826294143879488187}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RingCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
