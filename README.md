@@ -20,7 +20,7 @@ Say "Toggle Profiler" to toggle visibility of the diagnostics profiler HUD
 
 ## How to 
 
-Built with Unity 2018 LTS and Visual Studio 2019.
+Built with MRTK 2.3, Unity 2018 LTS and Visual Studio 2019.
 Requires Webcam and Spatial Perception capabilities in UWP appx.
 
 [How to build](https://medium.com/@troyferrell/building-an-xr-application-in-unity-with-mrtk-part-7-building-the-app-d98d56425296)
