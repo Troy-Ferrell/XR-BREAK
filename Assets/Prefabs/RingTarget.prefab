@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8500583922719855540}
   - component: {fileID: 4083411265874938742}
   - component: {fileID: 3055965000746095364}
-  - component: {fileID: 2277392637408802745}
+  - component: {fileID: 5910536183346375201}
   m_Layer: 9
   m_Name: Ring
   m_TagString: Untagged
@@ -114,6 +114,21 @@ MonoBehaviour:
   OnSpawn:
     m_PersistentCalls:
       m_Calls: []
+  OnCapture:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5910536183346375201}
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 82bb32b8900f55c488f190d835ffcd99,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnRelease:
     m_PersistentCalls:
       m_Calls: []
@@ -136,7 +151,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!82 &2277392637408802745
+--- !u!82 &5910536183346375201
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

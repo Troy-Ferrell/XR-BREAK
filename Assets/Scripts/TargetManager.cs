@@ -94,9 +94,9 @@ namespace XR.Break
 
                         if (IsValidPlacement(midPoint))
                         {
-                            var ring = ringPool.Request().GetGameObject();
-                            ring.transform.position = midPoint;
-                            ring.transform.rotation = Quaternion.LookRotation(direction);
+                            PlaceTarget(ringPool.Request(),
+                                        midPoint,
+                                        Quaternion.LookRotation(direction));
                         }
                     }
                 }
@@ -122,12 +122,25 @@ namespace XR.Break
 
                         if (IsValidPlacement(placementPoint))
                         {
-                            var marker = markerPool.Request().GetGameObject();
-                            marker.transform.position = placementPoint;
-                            marker.transform.rotation = Quaternion.LookRotation(hit.normal);
+                            PlaceTarget(markerPool.Request(),
+                                        placementPoint,
+                                        Quaternion.LookRotation(hit.normal));
                         }
                     }
                 }
+            }
+        }
+
+        private void PlaceTarget(IObjectPoolItem item, Vector3 placementPoint, Quaternion rotation)
+        {
+            var targetObj = item.GetGameObject();
+            targetObj.transform.position = placementPoint;
+            targetObj.transform.rotation = rotation;
+
+            var target = targetObj.GetComponentInChildren<Target>(true);
+            if (target != null)
+            {
+                target.Lock();
             }
         }
 

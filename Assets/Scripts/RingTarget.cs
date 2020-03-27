@@ -24,6 +24,7 @@ namespace XR.Break
                 if (positiveSideStart != positiveSideEnd)
                 {
                     ScoreManager.Instance.AddScore(2 * DEFAULT_SCORE);
+                    OnCapture?.Invoke();
                     Release();
                 }
             }

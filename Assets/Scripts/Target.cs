@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.XR.WSA;
 
 namespace XR.Break
 {
@@ -25,7 +26,7 @@ namespace XR.Break
         [Header("Events")]
 
         public UnityEvent OnSpawn = new UnityEvent();
-
+        public UnityEvent OnCapture = new UnityEvent();
         public UnityEvent OnRelease = new UnityEvent();
 
         protected bool active = false;
@@ -35,6 +36,8 @@ namespace XR.Break
         private const string SpinOutAnimationTrigger = "SpinOut";
 
         protected const uint DEFAULT_SCORE = 10;
+
+        private WorldAnchor anchor = null;
 
         public void SpinStart()
         {
@@ -66,9 +69,27 @@ namespace XR.Break
             OnSpawn?.Invoke();
         }
 
+        public void Lock()
+        {
+            if (anchor == null)
+            {
+                anchor = transform.parent.gameObject.AddComponent<WorldAnchor>();
+            }
+        }
+
+        public void Unlock()
+        {
+            if (anchor != null)
+            {
+                Destroy(anchor);
+                anchor = null;
+            }
+        }
+
         protected virtual void OnDisable()
         {
             active = false;
+            Unlock();
         }
 
         protected virtual void Update()
@@ -88,6 +109,7 @@ namespace XR.Break
             if (active)
             {
                 ScoreManager.Instance.AddScore(DEFAULT_SCORE);
+                OnCapture?.Invoke();
                 Release();
             }
         }
