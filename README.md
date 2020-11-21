@@ -20,7 +20,26 @@ Say "Toggle Profiler" to toggle visibility of the diagnostics profiler HUD
 
 ## How to 
 
-Built with MRTK 2.3, Unity 2018 LTS and Visual Studio 2019.
+Built with MRTK 2.5.1, Unity 2019 LTS and Visual Studio 2019.
 Requires Webcam and Spatial Perception capabilities in UWP appx.
 
-[How to build](https://medium.com/@troyferrell/building-an-xr-application-in-unity-with-mrtk-part-7-building-the-app-d98d56425296)
+### Hololens/Windows Mixed Reality:
+
+#### Building from Unity
+1. The first step is to build from the Unity editor to a Visual Studio solution for a UWP app.
+1. Open the Build Settings Window (Cntrl+Shift+B shortcut) via File > Build Settings.
+1. Ensure the Universal Windows Platform is applied and that the root scene is added to the Scenes in Build.
+1. Click the Build button and select a folder for where the Visual Studio solution will be placed.
+1. For faster build times, it is recommended to build to the same folder every iteration, disable anti-malware scanning software, and utilize an SSD.
+
+#### Building Visual Studio
+1. After Unity finished building the UWP Visual Studio solution, a file explorer should automatically appear with the build folder as focus. Open this folder and open the .sln file.
+1. With Visual Studio open, one can change any UWP appx package changes such as icons and app name, etc., by double clicking the Package.appxmanifest file under the Universal Windows project.
+1. Next step is to build the UWP Visual Studio solution to effectively create an Appx package that can be deployed to device.
+1. Select Master or Release (Debug will run very slow on device).
+1. Select ARM as the architecture type (HoloLens 2 has an ARM based processor, HoloLens 1 has an x86 processor).
+1. Ensure build target is Device.
+1. Select **Build tab** > **Build solution**.
+1. Once the build completes, the app can be deployed via **Build tab** > **Deploy Solution**. This assumes you have developer [unlocked and paired you HoloLens device to your PC and that the HoloLens](https://docs.microsoft.com/en-us/windows/mixed-reality/develop/platform-capabilities-and-apis/using-visual-studio) is connect via USB.
+1. [HoloLens Emulator notes](https://docs.microsoft.com/en-us/windows/mixed-reality/develop/platform-capabilities-and-apis/using-the-hololens-emulator)
+
