@@ -25,8 +25,7 @@ MonoBehaviour:
     reference: Microsoft.MixedReality.Toolkit.Input.MixedRealityInputSystem, Microsoft.MixedReality.Toolkit.Services.InputSystem
   enableBoundarySystem: 1
   boundarySystemType:
-    reference: Microsoft.MixedReality.Toolkit.Boundary.MixedRealityBoundarySystem,
-      Microsoft.MixedReality.Toolkit.Services.BoundarySystem
+    reference: Microsoft.MixedReality.Toolkit.XRSDK.XRSDKBoundarySystem, Microsoft.MixedReality.Toolkit.Providers.XRSDK
   boundaryVisualizationProfile: {fileID: 11400000, guid: c6ae5b6fd8bf0ba469020d25943847b1,
     type: 2}
   enableTeleportSystem: 1
@@ -53,3 +52,4 @@ MonoBehaviour:
   registeredServiceProvidersProfile: {fileID: 0}
   useServiceInspectors: 1
   renderDepthBuffer: 0
+  enableVerboseLogging: 0
