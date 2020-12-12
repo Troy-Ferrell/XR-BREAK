@@ -245,7 +245,7 @@ namespace XR.Break
 
         private static IMixedRealityPointer GetLinePointer(IMixedRealityController controller)
         {
-            foreach (var pointer in controller?.InputSource.Pointers)
+            foreach (var pointer in controller?.InputSource?.Pointers)
             {
                 if (pointer is LinePointer linePointer)
                 {
