@@ -6,6 +6,10 @@ The application was designed for the HoloLens 2 device and makes use of hand tra
 
 ![Demo](./Documentation/XR-Break-GameDemo.gif)
 
+This project has been recently updated to support the Oculus platform and Quest device, as well as the new hand tracking feature released by Oculus. 
+
+![Demo](./Documentation/XR-Break-Oculus.gif)
+
 ## How to play
 
 1. Launch application
@@ -42,4 +46,22 @@ Requires Webcam and Spatial Perception capabilities in UWP appx.
 1. Select **Build tab** > **Build solution**.
 1. Once the build completes, the app can be deployed via **Build tab** > **Deploy Solution**. This assumes you have developer [unlocked and paired you HoloLens device to your PC and that the HoloLens](https://docs.microsoft.com/en-us/windows/mixed-reality/develop/platform-capabilities-and-apis/using-visual-studio) is connect via USB.
 1. [HoloLens Emulator notes](https://docs.microsoft.com/en-us/windows/mixed-reality/develop/platform-capabilities-and-apis/using-the-hololens-emulator)
+
+### Oculus Quest:
+
+#### Editor Mode (via Oculus Link)
+1. Open the project and root scene
+1. Open the *Build Settings* Window (Cntrl+Shift+B shortcut) via **File** > **Build Settings**.
+1. Ensure the **Android** platform is active (if not, select and click **Switch Platform**)
+1. Ensure the Oculus Quest device is connected via USB to the development machine.
+1. In headset, follow all prompts to allow USB Debugging, Oculus Link, etc. 
+1. In Unity, enter play mode. The app should launch inside of the HMD.
+
+#### Build APK and Deploy
+1. Ensure the Oculus Quest device is connected via USB to the development machine.
+1. In headset, follow all prompts to allow USB Debugging, Oculus Link, etc. 
+1. Open the Build Settings Window (Cntrl+Shift+B shortcut) via **File** > **Build Settings**.
+1. Ensure the **Android** platform is applied and that the root scene is added to the Scenes in Build.
+1. Under **Run Device** property, selec the *Oculus Quest* entry.
+1. Click the **Build & Run** button
 
